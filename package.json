@@ -1,0 +1,26 @@
+{
+  "name": "warframetoolchatbot",
+  "version": "0.0.1",
+  "description": "A chat bot for twitch that provides useful commands to query Warframe information",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iBelg/warframetoolchatbot.git"
+  },
+  "keywords": [
+    "twitch",
+    "chat",
+    "bot",
+    "chatbot",
+    "warframe"
+  ],
+  "author": "iBelg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iBelg/warframetoolchatbot/issues"
+  },
+  "homepage": "https://github.com/iBelg/warframetoolchatbot#readme"
+}
