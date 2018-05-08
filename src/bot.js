@@ -1,15 +1,29 @@
-import dotenv from 'dotenv';
-import WarframeToolBot from './WarframeToolBot';
+import './init-app';
+import WebSocketManager from './WebSocketManager';
 
-export default class Bot {
+class WarframeToolBot {
     constructor() {
-        console.log("TEST12345");
-        dotenv.config();
-        //console.log(process.env)
-        var {IRC_SERVER, SERVER_PORT, BOT_NAME, OAUTH} = process.env;
-        var warframeToolBot = new WarframeToolBot(IRC_SERVER, SERVER_PORT, BOT_NAME, OAUTH);
         
+        this.start()
+    }
+
+    start() {
+        let {BOT_NAME, DEFAULT_CHANNEL} = process.env;
+        logger.info(`Creating bot... (${BOT_NAME})`);
+        WebSocketManager.joinChannel(DEFAULT_CHANNEL);
+        WebSocketManager.sendMessage('Hi there guys!', DEFAULT_CHANNEL);
+    }
+
+    stop() {
+        logger.debug('Stopping the bot...');
+        WebSocketManager.close();
     }
 }
 
-new Bot();
+var instance = new WarframeToolBot();
+Object.freeze(instance);
+
+export default instance;
+
+process.on('exit', () => (instance.stop()));
+process.on('SIGINT', () => (instance.stop()));

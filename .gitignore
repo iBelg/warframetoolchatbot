@@ -60,3 +60,6 @@ typings/
 # babel dist folder
 dist/
 
+#vscode settings
+.vscode/
+
