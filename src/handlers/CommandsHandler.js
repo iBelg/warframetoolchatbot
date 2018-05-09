@@ -5,17 +5,16 @@ import Command from '../commands/Command';
 class CommandsHandler {
 
     handleCommand(command, paramString) {
-        var command = undefined;
+        var commandHandler = undefined;
         switch(_.toLower(command)) {
             case 'item':
-                logger.debug('ItemCommand!');
-                command = new ItemCommand(paramString);
+                commandHandler = new ItemCommand(paramString);
                 break;
             default:
-                command = new Command(paramString); //TODO: unknown command implement
+                commandHandler = new Command(command, paramString); //TODO: unknown command implement
         }
-        if (command !== undefined) {
-            command.execute();
+        if (commandHandler !== undefined) {
+            commandHandler.execute();
         } else {
             logger.debug(`Could not execute command ${command}!`)
         }

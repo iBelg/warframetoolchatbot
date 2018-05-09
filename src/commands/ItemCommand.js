@@ -2,7 +2,7 @@ import Command from './Command'
 
 export default class ItemCommand extends Command {
     constructor(params) {
-        super(params);
+        super('item', params);
     }
 
     execute() {

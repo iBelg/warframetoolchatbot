@@ -1,0 +1,8 @@
+http://warframe.wikia.com/wiki/Module:Weapons/data
+http://warframe.wikia.com/wiki/Module:Warframes/data
+http://warframe.wikia.com/wiki/Module:Void/data
+http://warframe.wikia.com/wiki/Module:Arcane/data
+http://warframe.wikia.com/wiki/Module:DropTables/data
+http://warframe.wikia.com/wiki/Module:Focus/data
+http://warframe.wikia.com/wiki/Module:Research/data
+http://warframe.wikia.com/wiki/Module:Weapons/Conclave/data
