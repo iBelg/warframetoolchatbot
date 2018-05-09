@@ -1,8 +1,10 @@
 import _ from 'lodash';
 import WsHandler from './wsHandler';
 import ParsedMessage, {COMMANDS} from '../ParsedMessage';
-import wsManager from '../WebSocketManager';
+import wsManager from '../managers/WebSocketManager';
 import CommandsHandler from './CommandsHandler';
+import Bot from '../bot';
+import {OBJ_STATE} from '../managers/StateManager';
 
 export default class MessageHandler extends WsHandler {
     constructor(webSocket) {
@@ -19,9 +21,11 @@ export default class MessageHandler extends WsHandler {
                     return this.handlePing(parsed);
                 case COMMANDS.PRIVMSG:
                     if (parsed.userCommand !== undefined) {
-                        logger.debug(`User requesting: [COMMAND: ${parsed.userCommand.name}] [PARAMS: ${parsed.userCommand.params}]`);
                         CommandsHandler.handleCommand(parsed.userCommand.name, parsed.userCommand.params);
                     }
+                    break;
+                case COMMANDS.CAPACK:
+                    Bot.getStateManager().setState(OBJ_STATE.READY_UP);
                     break;
             }
         }

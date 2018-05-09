@@ -5,7 +5,8 @@ export const COMMANDS = {
     ERROR: 'error',
     NOTICE: 'notice',
     PRIVMSG: 'privmsg',
-    WHISPER: 'whisper'
+    WHISPER: 'whisper',
+    CAPACK: 'capack'
 };
 
 const TARGET_TYPE = {
@@ -40,6 +41,8 @@ export default class ParsedMessage {
         } else if (_.startsWith(rawMessage, 'NOTICE')) {
             this.command = COMMANDS.NOTICE;
             this.message = rawMessage.split(/:(.+)/)[1];
+        } else if (rawMessage.indexOf('CAP * ACK') >= 0) {
+            this.command = COMMANDS.CAPACK;
         }
     }
 

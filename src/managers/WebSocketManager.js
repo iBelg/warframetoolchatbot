@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import WebSocket from 'ws';
-import {READY_STATE} from './handlers/wsHandler';
-import WsErrorHandler from './handlers/wsErrorHandler';
-import WsOpenHandler from './handlers/wsOpenHandler';
-import WsMessageHandler from './handlers/wsMessageHandler';
-import WsCloseHandler from './handlers/wsCloseHandler';
-import Queue from './Queue';
+import {READY_STATE} from '../handlers/wsHandler';
+import WsErrorHandler from '../handlers/wsErrorHandler';
+import WsOpenHandler from '../handlers/wsOpenHandler';
+import WsMessageHandler from '../handlers/wsMessageHandler';
+import WsCloseHandler from '../handlers/wsCloseHandler';
+import Queue from '../Queue';
 
 class WebSocketManager {
     constructor() {
@@ -51,7 +51,7 @@ class WebSocketManager {
 
     joinChannel(channel) {
         if (this.webSocket && this.webSocket.readyState === READY_STATE.OPEN) {
-            logger.debug(`Trying to join ${channel}...`);
+            logger.debug(`Joining ${channel}...`);
             this.webSocket.send(`JOIN #${channel}`);
         } else if (this.webSocket && this.webSocket.readyState === READY_STATE.CONNECTING) {
             logger.info(`WebSocket is not ready yet. Will join ${channel} when ready!`);
